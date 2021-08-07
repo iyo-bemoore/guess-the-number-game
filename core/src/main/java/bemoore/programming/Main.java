@@ -14,12 +14,19 @@ public class Main {
 
         // Context container
         ConfigurableApplicationContext context  = new ClassPathXmlApplicationContext((CONFIG_LOCATION));
+
+        // get numberGenerator bean from context //
         NumberGenerator numberGenerator = context.getBean("numberGenerator",NumberGenerator.class);
 
         // call method next
 
         int number = numberGenerator.next();
-        log.info("number = {}", number);
+        log.info("The number from Main is = {}", number);
+
+        // get game bean from context
+
+        Game game = context.getBean("game", Game.class);
+        game.reset();
 
         // close context
 
